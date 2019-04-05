@@ -6,27 +6,31 @@
  * @Version 1.0
  **/
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
 public class Solution {
+    private static final char LEFT_BRACKET = '[';
+    private static final char RIGHT_BRACKET = ']';
+    private static final int CHAR_ZERO = '0';
+    private static final int CHAR_NINE = '9';
+
     public String decodeString(String s) {
         Stack<Character> stack = new Stack<>();
         List<Character> numList = new ArrayList<>();
         for (char c : s.toCharArray()) {
-            if (c != ']') {
+            if (c != RIGHT_BRACKET) {
                 stack.push(c);
             } else {
                 StringBuilder temp = new StringBuilder();
-                while (stack.peek() != '[') {
+                while (stack.peek() != LEFT_BRACKET) {
                     temp.append(stack.pop());
                 }
                 temp = temp.reverse();
                 stack.pop();
 
                 StringBuilder count = new StringBuilder();
-                while (!stack.isEmpty() && stack.peek() >= 48 && stack.peek() <= 57) {
+                while (!stack.isEmpty() && stack.peek() >= CHAR_ZERO && stack.peek() <= CHAR_NINE) {
                     count.append(stack.pop());
                 }
                 count = count.reverse();

@@ -8,7 +8,12 @@
 import java.util.LinkedList;
 
 public class Solution {
-    // BFS
+    /**
+     * BFS
+     *
+     * @param grid 地图
+     * @return 岛屿数量
+     */
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;
@@ -80,7 +85,12 @@ public class Solution {
         return res;
     }
 
-    // DFS
+    /**
+     * DFS
+     *
+     * @param grid 地图
+     * @return 岛屿数量
+     */
     public int numIslands2(char[][] grid) {
         if (grid == null || grid.length == 0) {
             return 0;

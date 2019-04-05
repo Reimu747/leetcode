@@ -9,15 +9,20 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Solution {
-    // 递减栈，栈中存的是下标值而不是元素值
-    // 若当前元素小于等于栈顶元素，入栈
-    // 否则，按顺序出栈，每出一个，计算下标差并存到结果中，直到栈空，或者当前元素小于等于栈顶元素时为止，此时当前元素入栈
-    public int[] dailyTemperatures(int[] T) {
+    /**
+     * 递减栈，栈中存的是下标值而不是元素值
+     * 若当前元素小于等于栈顶元素，入栈
+     * 否则，按顺序出栈，每出一个，计算下标差并存到结果中，直到栈空，或者当前元素小于等于栈顶元素时为止，此时当前元素入栈
+     *
+     * @param t 数组
+     * @return 结果
+     */
+    public int[] dailyTemperatures(int[] t) {
         Stack<Integer> stack = new Stack<>();
-        int[] res = new int[T.length];
+        int[] res = new int[t.length];
 
-        for (int i = 0; i < T.length; i++) {
-            while (!stack.isEmpty() && T[stack.peek()] < T[i]) {
+        for (int i = 0; i < t.length; i++) {
+            while (!stack.isEmpty() && t[stack.peek()] < t[i]) {
                 res[stack.peek()] = i - stack.peek();
                 stack.pop();
             }

@@ -19,7 +19,7 @@ public class Solution {
             return false;
         }
 
-        Map<Character, String> map = new HashMap<>();
+        Map<Character, String> map = new HashMap<>(100);
         for (int i = 0;i < patterns.length;i++) {
             if (map.size() != 0) {
                 if (map.containsKey(patterns[i]) && !map.get(patterns[i]).equals(words[i])) {

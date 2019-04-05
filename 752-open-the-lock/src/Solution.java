@@ -8,6 +8,23 @@
 import java.util.*;
 
 public class Solution {
+    private static final char ZERO = '0';
+    private static final char ONE = '1';
+    private static final char TWO = '2';
+    private static final char THREE = '3';
+    private static final char FOUR = '4';
+    private static final char FIVE = '5';
+    private static final char SIX = '6';
+    private static final char SEVEN = '7';
+    private static final char EIGHT = '8';
+    private static final char NINE = '9';
+
+    private static final int NUM_ZERO = 0;
+    private static final int NUM_ONE = 1;
+    private static final int NUM_TWO = 2;
+    private static final int NUM_THREE = 3;
+    private static final int NUM_FOUR = 4;
+
     public int openLock(String[] deadends, String target) {
         String ori = "0000";
         LinkedList<String> queue = new LinkedList<>();
@@ -18,7 +35,7 @@ public class Solution {
         int res = 0;
 
         for (String s : deadends) {
-            if (target.equals(s)) {
+            if ("0000".equals(s)) {
                 return -1;
             }
         }
@@ -48,11 +65,11 @@ public class Solution {
 
     private List<String> nextNodes(String ori) {
         List<String> res = new ArrayList<>();
-        if (ori.charAt(0) == '0') {
+        if (ori.charAt(NUM_ZERO) == ZERO) {
             res.add(String.valueOf(Integer.parseInt(ori) + 1000));
             res.add(String.valueOf(Integer.parseInt(ori) + 9000));
         }
-        else if (ori.charAt(0) == '9') {
+        else if (ori.charAt(NUM_ZERO) == NINE) {
             res.add(String.valueOf(Integer.parseInt(ori) - 1000));
             res.add(String.valueOf(Integer.parseInt(ori) - 9000));
         }
@@ -61,11 +78,11 @@ public class Solution {
             res.add(String.valueOf(Integer.parseInt(ori) + 1000));
         }
 
-        if (ori.charAt(1) == '0') {
+        if (ori.charAt(NUM_ONE) == ZERO) {
             res.add(String.valueOf(Integer.parseInt(ori) + 100));
             res.add(String.valueOf(Integer.parseInt(ori) + 900));
         }
-        else if (ori.charAt(1) == '9') {
+        else if (ori.charAt(NUM_ONE) == NINE) {
             res.add(String.valueOf(Integer.parseInt(ori) - 100));
             res.add(String.valueOf(Integer.parseInt(ori) - 900));
         }
@@ -74,11 +91,11 @@ public class Solution {
             res.add(String.valueOf(Integer.parseInt(ori) + 100));
         }
 
-        if (ori.charAt(2) == '0') {
+        if (ori.charAt(NUM_TWO) == ZERO) {
             res.add(String.valueOf(Integer.parseInt(ori) + 10));
             res.add(String.valueOf(Integer.parseInt(ori) + 90));
         }
-        else if (ori.charAt(2) == '9') {
+        else if (ori.charAt(NUM_TWO) == NINE) {
             res.add(String.valueOf(Integer.parseInt(ori) - 10));
             res.add(String.valueOf(Integer.parseInt(ori) - 90));
         }
@@ -87,11 +104,11 @@ public class Solution {
             res.add(String.valueOf(Integer.parseInt(ori) + 10));
         }
 
-        if (ori.charAt(3) == '0') {
+        if (ori.charAt(NUM_THREE) == ZERO) {
             res.add(String.valueOf(Integer.parseInt(ori) + 1));
             res.add(String.valueOf(Integer.parseInt(ori) + 9));
         }
-        else if (ori.charAt(3) == '9') {
+        else if (ori.charAt(NUM_THREE) == NINE) {
             res.add(String.valueOf(Integer.parseInt(ori) - 1));
             res.add(String.valueOf(Integer.parseInt(ori) - 9));
         }
@@ -102,7 +119,7 @@ public class Solution {
 
         for (int i = 0;i < res.size();i++) {
             String temp = "";
-            for (int j = 0;j < 4 - res.get(i).length();j++) {
+            for (int j = 0;j < NUM_FOUR - res.get(i).length();j++) {
                 temp += "0";
             }
             res.set(i, temp + res.get(i));
