@@ -5,6 +5,7 @@
  * @Description
  * @Version 1.0
  **/
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class Solution {
         }
 
         Map<Character, String> map = new HashMap<>(100);
-        for (int i = 0;i < patterns.length;i++) {
+        for (int i = 0; i < patterns.length; i++) {
             if (map.size() != 0) {
                 if (map.containsKey(patterns[i]) && !map.get(patterns[i]).equals(words[i])) {
                     return false;

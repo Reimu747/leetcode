@@ -5,7 +5,9 @@
  * @Description
  * @Version 1.0
  **/
-import java.util.*;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution {
     public int numSquares(int n) {
@@ -16,8 +18,8 @@ public class Solution {
         while (!queue.isEmpty()) {
             int size = queue.size();
 
-            for (int i = 0;i < size;i++) {
-                for (int j = (int) Math.sqrt(queue.element());j > 0;j--) {
+            for (int i = 0; i < size; i++) {
+                for (int j = (int) Math.sqrt(queue.element()); j > 0; j--) {
                     if (j * j == queue.element()) {
                         return res + 1;
                     }

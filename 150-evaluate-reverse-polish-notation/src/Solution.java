@@ -5,13 +5,14 @@
  * @Description
  * @Version 1.0
  **/
+
 import java.util.Stack;
 
 public class Solution {
     public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
 
-        for (int i = 0;i < tokens.length;i++) {
+        for (int i = 0; i < tokens.length; i++) {
             if ("+".equals(tokens[i]) || "-".equals(tokens[i]) || "*".equals(tokens[i]) || "/".equals(tokens[i])) {
                 int a = stack.pop();
                 int b = stack.pop();
@@ -44,6 +45,7 @@ public class Solution {
         Solution s = new Solution();
         System.out.println(s.evalRPN(new String[]{"2", "1", "+", "3", "*"}));
         System.out.println(s.evalRPN(new String[]{"4", "13", "5", "/", "+"}));
-        System.out.println(s.evalRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}));
+        System.out.println(s.evalRPN(new String[]{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5",
+                "+"}));
     }
 }

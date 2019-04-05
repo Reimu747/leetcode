@@ -5,6 +5,7 @@
  * @Description
  * @Version 1.0
  **/
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -21,7 +22,8 @@ public class Solution {
         for (char c : s.toCharArray()) {
             if (c != RIGHT_BRACKET) {
                 stack.push(c);
-            } else {
+            }
+            else {
                 StringBuilder temp = new StringBuilder();
                 while (stack.peek() != LEFT_BRACKET) {
                     temp.append(stack.pop());

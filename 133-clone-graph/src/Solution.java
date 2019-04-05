@@ -8,16 +8,14 @@
 
 import java.util.*;
 
-public class Solution
-{
+public class Solution {
     /**
      * BFS
      *
      * @param node 提供的头节点
      * @return 克隆的头节点
      */
-    public Node cloneGraphByBFS(Node node)
-    {
+    public Node cloneGraphByBFS(Node node) {
         Queue<Node> queue = new LinkedList<>();
         queue.add(node);
         Node res = new Node();
@@ -25,18 +23,14 @@ public class Solution
         Map<Node, Node> map = new HashMap<>(100);
         map.put(node, res);
 
-        while (!queue.isEmpty())
-        {
+        while (!queue.isEmpty()) {
             int size = queue.size();
 
-            for (int i = 0; i < size; i++)
-            {
+            for (int i = 0; i < size; i++) {
                 Node cur = queue.peek();
                 List<Node> list = new ArrayList<>();
-                for (Node n : cur.neighbors)
-                {
-                    if (!map.containsKey(n))
-                    {
+                for (Node n : cur.neighbors) {
+                    if (!map.containsKey(n)) {
                         queue.offer(n);
                         Node newNode = new Node();
                         newNode.val = n.val;
@@ -58,24 +52,20 @@ public class Solution
      * @param node 提供的头节点
      * @return 克隆的头节点
      */
-    public Node cloneGraph(Node node)
-    {
+    public Node cloneGraph(Node node) {
         Map<Node, Node> visited = new HashMap<>(100);
         return dfs(node, visited);
     }
 
-    private Node dfs(Node cur, Map<Node, Node> visited)
-    {
-        if (visited.containsKey(cur))
-        {
+    private Node dfs(Node cur, Map<Node, Node> visited) {
+        if (visited.containsKey(cur)) {
             return visited.get(cur);
         }
         Node res = new Node();
         visited.put(cur, res);
         res.val = cur.val;
         List<Node> list = new ArrayList<>();
-        for (Node n : cur.neighbors)
-        {
+        for (Node n : cur.neighbors) {
             list.add(dfs(n, visited));
         }
         res.neighbors = list;
@@ -83,30 +73,24 @@ public class Solution
     }
 }
 
-class Node
-{
+class Node {
     public int val;
     public List<Node> neighbors;
 
-    public Node()
-    {
+    public Node() {
     }
 
-    public Node(int val, List<Node> neighbors)
-    {
+    public Node(int val, List<Node> neighbors) {
         this.val = val;
         this.neighbors = neighbors;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass())
-        {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Node node = (Node) o;
@@ -114,8 +98,7 @@ class Node
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(val, neighbors);
     }
 }

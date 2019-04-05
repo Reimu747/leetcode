@@ -10,12 +10,13 @@ public class Solution {
      * 动态规划
      *
      * @param nums 数组
-     * @param s 目标
+     * @param s    目标
      * @return 结果数
      */
     public int findTargetSumWays(int[] nums, int s) {
         return f(nums, nums.length - 1, s);
     }
+
     private int f(int[] nums, int i, int s) {
         if (i == 0) {
             if (s == 0 && nums[i] == 0) {

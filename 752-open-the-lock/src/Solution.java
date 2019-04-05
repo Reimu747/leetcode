@@ -5,6 +5,7 @@
  * @Description
  * @Version 1.0
  **/
+
 import java.util.*;
 
 public class Solution {
@@ -43,7 +44,7 @@ public class Solution {
         while (!queue.isEmpty()) {
             int size = queue.size();
 
-            for (int i = 0;i < size;i++) {
+            for (int i = 0; i < size; i++) {
                 if (queue.element().equals(target)) {
                     return res;
                 }
@@ -117,9 +118,9 @@ public class Solution {
             res.add(String.valueOf(Integer.parseInt(ori) + 1));
         }
 
-        for (int i = 0;i < res.size();i++) {
+        for (int i = 0; i < res.size(); i++) {
             String temp = "";
-            for (int j = 0;j < NUM_FOUR - res.get(i).length();j++) {
+            for (int j = 0; j < NUM_FOUR - res.get(i).length(); j++) {
                 temp += "0";
             }
             res.set(i, temp + res.get(i));
@@ -139,7 +140,7 @@ public class Solution {
         System.out.println(s.nextNodes("8092"));
         System.out.println(s.nextNodes("0000"));
 
-        String[] deadends = new String[]{"0201","0101","0102","1212","2002"};
+        String[] deadends = new String[]{"0201", "0101", "0102", "1212", "2002"};
         String target = "0202";
         System.out.println(s.openLock(deadends, target));
     }

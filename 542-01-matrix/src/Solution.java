@@ -9,63 +9,52 @@ import java.util.Queue;
  * @Description
  * @Version 1.0
  **/
-class Solution
-{
+class Solution {
     /**
      * BFS，未通过时间要求，待优化
+     *
      * @param matrix 矩阵
      * @return 结果
      */
-    public int[][] updateMatrix(int[][] matrix)
-    {
+    public int[][] updateMatrix(int[][] matrix) {
         int[][] res = new int[matrix.length][matrix[0].length];
         boolean[][] needCheck = new boolean[matrix.length][matrix[0].length];
         resetNeedCheck(needCheck);
 
-        for (int i = 0; i < matrix.length; i++)
-        {
-            for (int j = 0; j < matrix[0].length; j++)
-            {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 resetNeedCheck(needCheck);
-                if (matrix[i][j] != 0)
-                {
+                if (matrix[i][j] != 0) {
                     Queue<int[]> queue = new LinkedList<>();
                     queue.offer(new int[]{i, j});
                     needCheck[i][j] = false;
                     int step = -1;
                     boolean endThisTurn = false;
 
-                    while (!queue.isEmpty() && !endThisTurn)
-                    {
+                    while (!queue.isEmpty() && !endThisTurn) {
                         step++;
                         int size = queue.size();
-                        for (int k = 0; k < size; k++)
-                        {
+                        for (int k = 0; k < size; k++) {
                             int x = queue.peek()[0];
                             int y = queue.peek()[1];
-                            if (matrix[x][y] == 0)
-                            {
+                            if (matrix[x][y] == 0) {
                                 res[i][j] = step;
                                 endThisTurn = true;
                                 break;
                             }
-                            if (x - 1 > -1 && needCheck[x - 1][y])
-                            {
+                            if (x - 1 > -1 && needCheck[x - 1][y]) {
                                 needCheck[x - 1][y] = false;
                                 queue.offer(new int[]{x - 1, y});
                             }
-                            if (y + 1 < matrix[0].length && needCheck[x][y + 1])
-                            {
+                            if (y + 1 < matrix[0].length && needCheck[x][y + 1]) {
                                 needCheck[x][y + 1] = false;
                                 queue.offer(new int[]{x, y + 1});
                             }
-                            if (x + 1 < matrix.length && needCheck[x + 1][y])
-                            {
+                            if (x + 1 < matrix.length && needCheck[x + 1][y]) {
                                 needCheck[x + 1][y] = false;
                                 queue.offer(new int[]{x + 1, y});
                             }
-                            if (y - 1 > -1 && needCheck[x][y - 1])
-                            {
+                            if (y - 1 > -1 && needCheck[x][y - 1]) {
                                 needCheck[x][y - 1] = false;
                                 queue.offer(new int[]{x, y - 1});
                             }
@@ -79,12 +68,9 @@ class Solution
         return res;
     }
 
-    private void resetNeedCheck(boolean[][] needCheck)
-    {
-        for (int i = 0; i < needCheck.length; i++)
-        {
-            for (int j = 0; j < needCheck[i].length; j++)
-            {
+    private void resetNeedCheck(boolean[][] needCheck) {
+        for (int i = 0; i < needCheck.length; i++) {
+            for (int j = 0; j < needCheck[i].length; j++) {
                 needCheck[i][j] = true;
             }
         }
@@ -100,32 +86,24 @@ class Solution
      * @param matrix 矩阵
      * @return 结果
      */
-    public int[][] updateMatrix2(int[][] matrix)
-    {
+    public int[][] updateMatrix2(int[][] matrix) {
         int numOfSkipPoint = 0;
         int numOfLoop = 0;
 
-        while (numOfSkipPoint != matrix.length * matrix[0].length)
-        {
+        while (numOfSkipPoint != matrix.length * matrix[0].length) {
             numOfSkipPoint = 0;
-            for (int i = 0; i < matrix.length; i++)
-            {
-                for (int j = 0; j < matrix[0].length; j++)
-                {
-                    if (matrix[i][j] <= numOfLoop)
-                    {
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[0].length; j++) {
+                    if (matrix[i][j] <= numOfLoop) {
                         numOfSkipPoint++;
                     }
-                    else
-                    {
+                    else {
                         boolean neighborsHasTarget =
                                 (i - 1 > -1 && matrix[i - 1][j] == numOfLoop) || (i + 1 < matrix.length && matrix[i + 1][j] == numOfLoop) || (j - 1 > -1 && matrix[i][j - 1] == numOfLoop) || (j + 1 < matrix[0].length && matrix[i][j + 1] == numOfLoop);
-                        if (neighborsHasTarget)
-                        {
+                        if (neighborsHasTarget) {
                             numOfSkipPoint++;
                         }
-                        else
-                        {
+                        else {
                             matrix[i][j]++;
                         }
                     }
@@ -137,8 +115,7 @@ class Solution
         return matrix;
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Solution solution = new Solution();
         int[][] matrix1 = new int[][]{
                 {0, 0, 0},
