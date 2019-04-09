@@ -55,4 +55,39 @@ public class Solution {
             }
         }
     }
+
+    /**
+     * DFS
+     *
+     * @param image    原图像
+     * @param sr       初始点横坐标
+     * @param sc       初始点纵坐标
+     * @param newColor 新颜色值
+     * @return 渲染后的图像
+     */
+    public int[][] floodFill2(int[][] image, int sr, int sc, int newColor) {
+        boolean[][] needCheck = new boolean[image.length][image[0].length];
+        resetNeedCheck(needCheck);
+        dfs(sr, sc, newColor, needCheck, image);
+        return image;
+    }
+
+    private void dfs(int x, int y, int newColor, boolean[][] needCheck, int[][] image) {
+        int oriColor = image[x][y];
+        image[x][y] = newColor;
+        needCheck[x][y] = false;
+
+        if (x - 1 > -1 && needCheck[x - 1][y] && image[x - 1][y] == oriColor) {
+            dfs(x - 1, y, newColor, needCheck, image);
+        }
+        if (x + 1 < image.length && needCheck[x + 1][y] && image[x + 1][y] == oriColor) {
+            dfs(x + 1, y, newColor, needCheck, image);
+        }
+        if (y - 1 > -1 && needCheck[x][y - 1] && image[x][y - 1] == oriColor) {
+            dfs(x, y - 1, newColor, needCheck, image);
+        }
+        if (y + 1 < image[0].length && needCheck[x][y + 1] && image[x][y + 1] == oriColor) {
+            dfs(x, y + 1, newColor, needCheck, image);
+        }
+    }
 }
