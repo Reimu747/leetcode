@@ -44,7 +44,7 @@ public class MyQueue {
             }
             return res;
         }
-//        leetcode上没有队列为空时pop的用例,因此随便设置一个返回值，不抛异常
+//        leetcode上没有队列为空时peek的用例,因此随便设置一个返回值，不抛异常
 //        throw new EmptyStackException();
         return 0;
     }
